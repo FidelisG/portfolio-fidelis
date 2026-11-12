@@ -656,18 +656,18 @@ input[type='email']::placeholder,
 }
 
 .service-section .service-item-wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
     padding: 104px 0 0;
 }
 
 .service-section .service-item {
     background: var(--white);
     border-radius: 8px;
-    padding: 56px 48px;
+    padding: 48px 36px;
     text-align: center;
-    min-width: 357px;
+    width: 100%;
 }
 
 [data-theme="dark"] .service-section .service-item {
@@ -675,7 +675,7 @@ input[type='email']::placeholder,
 }
 
 .service-section .service-item:not(:last-of-type) {
-    margin-right: 48px;
+    margin-right: 0;
 }
 
 .service-section .service-item .icon {
@@ -1383,11 +1383,11 @@ input[type='email']::placeholder,
 
     /* SERVICES */
     .service-section .service-item {
-        min-width: 325px;
+        min-width: initial;
     }
 
     .service-section .service-item:not(:last-of-type) {
-        margin-right: 32px;
+        margin-right: 0;
     }
 
     /* TESTIMONIAL */
@@ -1404,13 +1404,13 @@ input[type='email']::placeholder,
 
     /* SERVICES */
     .service-section .service-item-wrapper {
-        flex-wrap: wrap;
+        gap: 24px;
     }
 
     .service-section .service-item {
         min-width: initial;
-        width: calc(50% - 16px);
-        margin-bottom: 32px;
+        width: 100%;
+        margin-bottom: 0;
     }
 
     .service-section .service-item:not(:last-of-type) {
@@ -1418,7 +1418,7 @@ input[type='email']::placeholder,
     }
 
     .service-section .service-item:first-of-type {
-        margin-right: 32px;
+        margin-right: 0;
     }
 
     /* BLOG */
@@ -1744,6 +1744,10 @@ input[type='email']::placeholder,
     }
 
     /* SERVICES */
+    .service-section .service-item-wrapper {
+        grid-template-columns: 1fr;
+    }
+
     .service-section .service-item {
         width: 100%;
     }
