@@ -1251,6 +1251,10 @@ input[type='email']::placeholder,
     transform: scale(1.1);
 }
 
+[data-theme="dark"] .education-skill-section .education-skill-wrapper .skill .skill-item .skill-icon {
+    filter: invert(1) brightness(1.2);
+}
+
 .education-skill-section .education-skill-wrapper .skill .skill-item .label {
     font-weight: 500;
     font-size: 14px;
