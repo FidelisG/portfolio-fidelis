@@ -129,6 +129,48 @@ document.addEventListener("DOMContentLoaded", function (event) {
             })
         }
     });
+    // Contact form
+    var contactForm = document.querySelector(".contact-form form");
+    if (contactForm) {
+        var successMessage = contactForm.querySelector(".success-submit-message");
+        var failMessage = contactForm.querySelector(".fail-submit-message");
+        var submitButton = contactForm.querySelector(".submit-btn");
+        if (successMessage && failMessage && submitButton) {
+            contactForm.addEventListener('submit', async function (e) {
+                e.preventDefault();
+
+                if (!contactForm.reportValidity()) {
+                    return;
+                }
+
+                successMessage.classList.remove('active');
+                failMessage.classList.remove('active');
+                submitButton.classList.add('show-loading');
+
+                try {
+                    var response = await fetch(contactForm.action, {
+                        method: contactForm.method,
+                        body: new FormData(contactForm),
+                        headers: {
+                            "Accept": "application/json",
+                        },
+                    });
+
+                    if (response.ok) {
+                        contactForm.reset();
+                        successMessage.classList.add('active');
+                        return;
+                    }
+
+                    failMessage.classList.add('active');
+                } catch (error) {
+                    failMessage.classList.add('active');
+                } finally {
+                    submitButton.classList.remove('show-loading');
+                }
+            });
+        }
+    }
 
     function isInViewport(el) {
         var rect = el.getBoundingClientRect();
